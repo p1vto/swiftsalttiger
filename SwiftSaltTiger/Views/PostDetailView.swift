@@ -24,21 +24,28 @@ struct PostDetailView: View {
                     .font(.system(size: 22).bold())
                     .padding()
                 
-                CacheAsyncImage(url: URL(string: post.cover)!)
-                    .frame(width: 150, height: 180)
-                    .cornerRadius(10)
-                
-                Text("出版时间: \(post.pubDate)")
-                    .foregroundColor(.black)
-                    .font(.system(size: 16))
-                
-                Text("出版社: \(post.publisher)")
-                    .foregroundColor(.black)
-                    .font(.system(size: 16))
-                
-                Text("提取码: \(post.downloadCode)")
-                    .foregroundColor(.black)
-                    .font(.system(size: 16))
+                HStack {
+                    CacheAsyncImage(url: URL(string: post.cover)!)
+                        .frame(width: 150, height: 180)
+                        .cornerRadius(10)
+
+                    VStack(alignment: .leading) {
+                        Text("出版时间: \(post.pubDate)")
+                            .foregroundColor(.black)
+                            .font(.system(size: 16))
+                        
+                        Text("出版社: \(post.publisher)")
+                            .foregroundColor(.black)
+                            .font(.system(size: 16))
+                        
+                        Text("提取码: \(post.downloadCode)")
+                            .foregroundColor(.black)
+                            .font(.system(size: 16))
+                        
+                        Spacer()
+                    }
+                    .padding()
+                }
                 
                 
                 if vm.isRequesting {
@@ -47,6 +54,7 @@ struct PostDetailView: View {
                         ProgressView()
                         Spacer()
                     }
+                    .padding()
                 } else {
                     Text(vm.detail)
                         .foregroundColor(.black)

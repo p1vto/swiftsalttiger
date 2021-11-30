@@ -8,15 +8,10 @@
 import Foundation
 import Kanna
 
-let baseURL = "https://www.salttiger.com"
 
-enum RequestError: Error {
-    case requestFail
-    case parseFail
-}
 
 @MainActor
-func fetchPopularList(page: Int) async -> Result<[Post], RequestError> {
+func fetchPostList(page: Int) async -> Result<[Post], AppError> {
     let url = URL(string: "\(baseURL)/page/\(page)")!
     let urlRequest = URLRequest(url: url)
     var postList = [Post]()
@@ -80,7 +75,7 @@ func fetchPopularList(page: Int) async -> Result<[Post], RequestError> {
 
 
 @MainActor
-func fetchPostDetail(post: Post) async -> Result<String, RequestError> {
+func fetchPostDetail(post: Post) async -> Result<String, AppError> {
     let url = URL(string: "\(post.detailUrl)")!
     let urlRequest = URLRequest(url: url)
     

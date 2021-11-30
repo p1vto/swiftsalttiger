@@ -23,7 +23,7 @@ class PostsViewModel: ObservableObject {
     func fetchPosts() async {
         if isRequesting && page != 1 { return }
         isRequesting = true
-        let result = await fetchPopularList(page: page)
+        let result = await fetchPostList(page: page)
         switch result {
             case .success(let posts):
                 if page == 1 {

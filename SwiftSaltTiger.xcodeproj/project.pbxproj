@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3223A3F2F0F2D7B03F079B42 /* Pods_SwiftSaltTiger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F37B29E0F2924758B037D59 /* Pods_SwiftSaltTiger.framework */; };
 		574C10C82753E5D400B15570 /* SwiftSaltTigerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C10BD2753E5D400B15570 /* SwiftSaltTigerApp.swift */; };
-		574C10C92753E5D400B15570 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C10BF2753E5D400B15570 /* Requests.swift */; };
+		574C10C92753E5D400B15570 /* AsyncRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C10BF2753E5D400B15570 /* AsyncRequests.swift */; };
 		574C10CA2753E5D400B15570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 574C10C02753E5D400B15570 /* Assets.xcassets */; };
 		574C10CB2753E5D400B15570 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C10C22753E5D400B15570 /* Post.swift */; };
 		574C10CD2753E5D400B15570 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C10C52753E5D400B15570 /* PostsView.swift */; };
@@ -21,13 +21,16 @@
 		887AF10B2755E7860028F3E0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF10A2755E7860028F3E0 /* WebView.swift */; };
 		887AF10D2755E80C0028F3E0 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF10C2755E80C0028F3E0 /* WebViewModel.swift */; };
 		887AF10F2755E8B60028F3E0 /* WebContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF10E2755E8B60028F3E0 /* WebContentView.swift */; };
+		8887C35E2756370500FA6B78 /* CombineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887C35D2756370500FA6B78 /* CombineRequest.swift */; };
+		8887C360275638E800FA6B78 /* RequestCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887C35F275638E800FA6B78 /* RequestCommon.swift */; };
+		8887C36227563A5800FA6B78 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8887C36127563A5800FA6B78 /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0DFBB9F943447185389240FB /* Pods-DYTT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DYTT.release.xcconfig"; path = "Target Support Files/Pods-DYTT/Pods-DYTT.release.xcconfig"; sourceTree = "<group>"; };
 		574C10A12752732100B15570 /* SwiftSaltTiger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSaltTiger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574C10BD2753E5D400B15570 /* SwiftSaltTigerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSaltTigerApp.swift; sourceTree = "<group>"; };
-		574C10BF2753E5D400B15570 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		574C10BF2753E5D400B15570 /* AsyncRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncRequests.swift; sourceTree = "<group>"; };
 		574C10C02753E5D400B15570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		574C10C22753E5D400B15570 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		574C10C52753E5D400B15570 /* PostsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		887AF10A2755E7860028F3E0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		887AF10C2755E80C0028F3E0 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		887AF10E2755E8B60028F3E0 /* WebContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentView.swift; sourceTree = "<group>"; };
+		8887C35D2756370500FA6B78 /* CombineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineRequest.swift; sourceTree = "<group>"; };
+		8887C35F275638E800FA6B78 /* RequestCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCommon.swift; sourceTree = "<group>"; };
+		8887C36127563A5800FA6B78 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D864809E294E1CE79AF24282 /* Pods-SwiftSaltTiger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSaltTiger.release.xcconfig"; path = "Target Support Files/Pods-SwiftSaltTiger/Pods-SwiftSaltTiger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +116,10 @@
 		574C10BE2753E5D400B15570 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				574C10BF2753E5D400B15570 /* Requests.swift */,
+				574C10BF2753E5D400B15570 /* AsyncRequests.swift */,
+				8887C35D2756370500FA6B78 /* CombineRequest.swift */,
+				8887C35F275638E800FA6B78 /* RequestCommon.swift */,
+				8887C36127563A5800FA6B78 /* Parser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -261,16 +270,19 @@
 			files = (
 				574C10C82753E5D400B15570 /* SwiftSaltTigerApp.swift in Sources */,
 				887AF10B2755E7860028F3E0 /* WebView.swift in Sources */,
+				8887C36227563A5800FA6B78 /* Parser.swift in Sources */,
 				574C10CB2753E5D400B15570 /* Post.swift in Sources */,
-				574C10C92753E5D400B15570 /* Requests.swift in Sources */,
+				574C10C92753E5D400B15570 /* AsyncRequests.swift in Sources */,
 				574C10D227552D5D00B15570 /* PostDetailView.swift in Sources */,
 				574C10CD2753E5D400B15570 /* PostsView.swift in Sources */,
+				8887C360275638E800FA6B78 /* RequestCommon.swift in Sources */,
 				574C10D427552FE600B15570 /* PostDetailViewModel.swift in Sources */,
 				887AF10F2755E8B60028F3E0 /* WebContentView.swift in Sources */,
 				887AF10D2755E80C0028F3E0 /* WebViewModel.swift in Sources */,
 				574C10CE2753E5D400B15570 /* PostCell.swift in Sources */,
 				574C10D027551A5F00B15570 /* CacheAsyncImage.swift in Sources */,
 				883F18082754CCB300D6F313 /* PostsViewModel.swift.swift in Sources */,
+				8887C35E2756370500FA6B78 /* CombineRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
