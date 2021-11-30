@@ -10,7 +10,7 @@ import Foundation
 import Kanna
 
 
-private func mapError(error: Error) -> AppError {
+private func mapAppError(error: Error) -> AppError {
     switch error {
     case is URLError:
         return .requestFail
@@ -30,13 +30,33 @@ private extension Publisher {
 struct PostListRequest {
     let page: Int
     
-//    var publisher: AnyPublisher<[Post], AppError> {
-//        let url = URL(string: "\(baseURL)/page/\(page)")!
-//        let urlRequest = URLRequest(url: url)
-//        let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
-//            .genericRetry()
-//            .tryMap { try Kanna.HTML(html: $0.data, encoding: .utf8) }
-//        
-//        
-//    }
+    var publisher: AnyPublisher<[Post], AppError> {
+        let url = URL(string: "\(baseURL)/page/\(page)")!
+        let urlRequest = URLRequest(url: url)
+        let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .genericRetry()
+            .tryMap { try Kanna.HTML(html: $0.data, encoding: .utf8) }
+            .tryMap(Parser.parseIntoPostList)
+            .mapError(mapAppError)
+            .eraseToAnyPublisher()
+        
+        return publisher
+    }
+}
+
+struct PostDetailRequest {
+    let post: Post
+    
+    var publisher: AnyPublisher<String, AppError> {
+        let url = URL(string: post.detailUrl)!
+        let urlRequest = URLRequest(url: url)
+        let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
+            .genericRetry()
+            .tryMap { try Kanna.HTML(html: $0.data, encoding: .utf8) }
+            .tryMap(Parser.parseIntoPostDetail)
+            .mapError(mapAppError)
+            .eraseToAnyPublisher()
+        
+        return publisher
+    }
 }
