@@ -8,5 +8,19 @@
 import Foundation
 
 struct AppState {
-    
+    var homeInfo = HomeInfo()
+}
+
+
+extension AppState {
+    struct HomeInfo {
+        var posts = [Post]()
+        var loadingPosts = false
+        var page = 1
+        var postListError: AppError?
+        
+        var presentingPost: Post?
+        var postDetail = ""
+        var postDetailError: AppError?
+    }
 }

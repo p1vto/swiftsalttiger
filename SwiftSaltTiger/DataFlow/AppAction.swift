@@ -8,6 +8,8 @@
 import Foundation
 
 enum AppAction {
-    case fetchPosts(page: Int)
-    case fetchPostDetail(post: Post)
+    case fetchPosts
+    case fetchPostDetail
+    case fetchPostsDone(result: Result<[Post], AppError>)
+    case fetchPostDetailDone(result: Result<String, AppError>)
 }
