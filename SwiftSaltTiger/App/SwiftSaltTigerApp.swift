@@ -13,7 +13,7 @@ struct SwiftSaltTigerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            PostsView()
+            HomeView()
                 .environmentObject(store)
                 
         }
