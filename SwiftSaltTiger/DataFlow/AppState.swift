@@ -8,19 +8,27 @@
 import Foundation
 
 struct AppState {
-    var homeInfo = HomeInfo()
+    var homeState = HomeState()
 }
 
 
 extension AppState {
-    struct HomeInfo {
+    struct HomeState {
         var posts = [Post]()
         var loadingPosts = false
         var page = 1
         var postListError: AppError?
         
         var presentingPost: Post?
+        var loadingPostDetail = false
         var postDetail = ""
         var postDetailError: AppError?
+    }
+}
+
+
+extension AppState {
+    struct EnvironmentState {
+        let baseURL = "https://www.salttiger.com"
     }
 }

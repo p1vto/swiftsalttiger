@@ -12,7 +12,7 @@ import Kanna
 
 @MainActor
 func fetchPostList(page: Int) async -> Result<[Post], AppError> {
-    let url = URL(string: "\(baseURL)/page/\(page)")!
+    let url = URL(string: "\(Defaults.URLConfig.host)/page/\(page)")!
     let urlRequest = URLRequest(url: url)
     var postList = [Post]()
     
@@ -29,13 +29,13 @@ func fetchPostList(page: Int) async -> Result<[Post], AppError> {
     
     posts.forEach { post in
         guard let id = post["id"],
-              let title = post.xpath("//header[@class='entry-header']//h1//a").first?.content,// 标题
+              let title = post.xpath("//header[@class='entry-header']//h1//a").first?.content,// title
               let detailUrl = post.xpath("//header[@class='entry-header']//h1//a").first?["href"],
               let entryContent = post.xpath("//div[@class='entry-content']").first,
               let content = entryContent.content,
-              let cover = entryContent.xpath("//p//img").first?["src"], //封面
-              let publisher = entryContent.xpath("//a").first?.content, // 出版社
-              let downloadUrl = entryContent.xpath("//a")[1]["href"] //下载地址
+              let cover = entryContent.xpath("//p//img").first?["src"], //cover
+              let publisher = entryContent.xpath("//a").first?.content, // publication date
+              let downloadUrl = entryContent.xpath("//a")[1]["href"] // download url
         else {
             return
         }

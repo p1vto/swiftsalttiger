@@ -7,29 +7,29 @@
 
 import SwiftUI
 
-struct PostsView: View {
-    @StateObject var vm = PostsViewModel()
+struct PostsView: View, StoreAccessor {
+    @EnvironmentObject var store: Store
     @State private var isPresentDetail = false
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(vm.posts) { post in
+                ForEach(homeState.posts) { post in
                     PostCell(post: post)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color(.lightGray.withAlphaComponent(0.1)))
                         .onTapGesture {
-                            vm.presentingPost = post
+                            store.dispatch(.fetchPostDetail(post: post))
                             isPresentDetail = true
                         }
                         .task {
-                            if vm.isNeedLoadMore(post: post) {
-                                await vm.fetchPosts()
+                            if isNeedLoadMore(post: post) {
+                                store.dispatch(.fetchPosts)
                             }
                         }
                 }
                 
-                if vm.isRequesting {
+                if homeState.loadingPosts {
                     HStack {
                         Spacer()
                         ProgressView()
@@ -42,20 +42,24 @@ struct PostsView: View {
             .navigationTitle("Posts")
             .listStyle(.plain)
             .refreshable {
-                await vm.refresh()
+                store.dispatch(.refreshPosts)
             }
             .popover(isPresented: $isPresentDetail) {
-                if let post = vm.presentingPost {
+                if let post = homeState.presentingPost {
                     PostDetailView(post: post)
                 } else {
                     Text("Empty Post :(")
                 }
             }
-            
+            .onAppear {
+                store.dispatch(.refreshPosts)
+            }
         }
-       
-
-            
+        
+    }
+    
+    private func isNeedLoadMore(post: Post) -> Bool {
+        post.id == homeState.posts.last?.id && !homeState.loadingPosts
     }
         
 }

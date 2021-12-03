@@ -24,7 +24,26 @@ extension AnyCancellable {
     }
 }
 
+/// refresh Posts
+struct RefreshPostsCommand: AppCommand {
+    
+    func execute(in store: Store) {
+        let token = SubscriptionToken()
+        PostListRequest(page: 1)
+            .publisher
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    store.dispatch(.refreshPostsDone(result: .failure(error)))
+                }
+                token.unseal()
+            } receiveValue: { posts in
+                store.dispatch(.refreshPostsDone(result: .success(posts)))
+            }
+            .seal(in: token)
 
+    }
+}
 
 /// Fetch Posts
 struct FetchPostsCommand: AppCommand {

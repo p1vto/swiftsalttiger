@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftSaltTigerApp: App {
+    @StateObject private var store = Store()
+
     var body: some Scene {
         WindowGroup {
             PostsView()
+                .environmentObject(store)
                 
         }
     }

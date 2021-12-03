@@ -21,15 +21,15 @@ struct PostCell: View {
                     .font(.title2)
                 Spacer()
                 
-                Text("出版时间: \(post.pubDate)")
+                Text("Publication Date: \(post.pubDate)")
                     .foregroundColor(.black)
                     .font(.system(size: 14))
                 
-                Text("出版社: \(post.publisher)")
+                Text("Publisher: \(post.publisher)")
                     .foregroundColor(.black)
                     .font(.system(size: 14))
                 
-                Text("提取码: \(post.downloadCode)")
+                Text("Code: \(post.downloadCode)")
                     .foregroundColor(.black)
                     .font(.system(size: 14))
             }

@@ -8,8 +8,10 @@
 import Foundation
 
 enum AppAction {
+    case refreshPosts
+    case refreshPostsDone(result: Result<[Post], AppError>)
     case fetchPosts
-    case fetchPostDetail
+    case fetchPostDetail(post: Post)
     case fetchPostsDone(result: Result<[Post], AppError>)
     case fetchPostDetailDone(result: Result<String, AppError>)
 }

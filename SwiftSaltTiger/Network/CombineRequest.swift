@@ -31,7 +31,7 @@ struct PostListRequest {
     let page: Int
     
     var publisher: AnyPublisher<[Post], AppError> {
-        let url = URL(string: "\(baseURL)/page/\(page)")!
+        let url = URL(string: "\(Defaults.URLConfig.host)/page/\(page)")!
         let urlRequest = URLRequest(url: url)
         let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .genericRetry()

@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PostDetailView: View {
+struct PostDetailView: View, StoreAccessor {
     let post: Post
-    @StateObject var vm = PostDetailViewModel()
+    @EnvironmentObject var store: Store
     @State private var isPresentingWebView = false
 
     init(post: Post) {
@@ -30,15 +30,15 @@ struct PostDetailView: View {
                         .cornerRadius(10)
 
                     VStack(alignment: .leading) {
-                        Text("出版时间: \(post.pubDate)")
+                        Text("Publication Date: \(post.pubDate)")
                             .foregroundColor(.black)
                             .font(.system(size: 16))
                         
-                        Text("出版社: \(post.publisher)")
+                        Text("Publisher: \(post.publisher)")
                             .foregroundColor(.black)
                             .font(.system(size: 16))
                         
-                        Text("提取码: \(post.downloadCode)")
+                        Text("Code: \(post.downloadCode)")
                             .foregroundColor(.black)
                             .font(.system(size: 16))
                         
@@ -48,7 +48,7 @@ struct PostDetailView: View {
                 }
                 
                 
-                if vm.isRequesting {
+                if homeState.loadingPostDetail {
                     HStack {
                         Spacer()
                         ProgressView()
@@ -56,7 +56,7 @@ struct PostDetailView: View {
                     }
                     .padding()
                 } else {
-                    Text(vm.detail)
+                    Text(homeState.postDetail)
                         .foregroundColor(.black)
                         .font(.system(size: 14))
                     
@@ -85,8 +85,7 @@ struct PostDetailView: View {
             .padding()
         }
         .task {
-            vm.post = self.post
-            await vm.fetchDetail()
+            store.dispatch(.fetchPostDetail(post: post))
         }
         .popover(isPresented: $isPresentingWebView) {
             WebContentView(url: URL(string: post.downloadLink)!)
