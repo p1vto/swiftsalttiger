@@ -21,12 +21,7 @@ struct HomeView: View, StoreAccessor {
                 .allowsHitTesting(postsViewEnable)
             SlideMenu()
                 .offset(x: offset)
-                .background(
-                    Color.white.opacity(offset == -Defaults.FrameSize.slideMenuWidth ? 0 : 0.01)
-                        .onTapGesture {
-                            performTransition(offset: -Defaults.FrameSize.slideMenuWidth)
-                        }
-                )
+                
         }
         .gesture(dragGesture)
     }
