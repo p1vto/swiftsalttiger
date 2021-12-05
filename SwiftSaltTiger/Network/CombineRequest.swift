@@ -47,7 +47,7 @@ struct PostListRequest {
 struct PostDetailRequest {
     let post: Post
     
-    var publisher: AnyPublisher<String, AppError> {
+    var publisher: AnyPublisher<(String, [Comment]), AppError> {
         let url = URL(string: post.detailUrl)!
         let urlRequest = URLRequest(url: url)
         let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)

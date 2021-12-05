@@ -16,4 +16,7 @@ struct Post: Codable, Identifiable {
     let downloadLink: String
     let downloadCode: String
     let detailUrl: String
+    
+    var detail: String?
+    var comments: [Comment]?
 }

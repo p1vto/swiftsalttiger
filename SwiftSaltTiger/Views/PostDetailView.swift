@@ -49,16 +49,20 @@ struct PostDetailView: View, StoreAccessor {
                 
                 
                 if homeState.loadingPostDetail {
-                    HStack {
-                        Spacer()
-                        ProgressView()
-                        Spacer()
+                    VStack {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                        .padding()
                     }
-                    .padding()
+                    
                 } else {
-                    Text(homeState.postDetail)
-                        .foregroundColor(.black)
+                    Text(homeState.presentingPost?.detail ?? "")
+                        .tint(.black)
                         .font(.system(size: 14))
+                        .lineSpacing(5)
                     
                     HStack {
                         Spacer()
@@ -78,6 +82,20 @@ struct PostDetailView: View, StoreAccessor {
                         Spacer()
                     }
                     .padding()
+                    
+                    if let comments = homeState.presentingPost?.comments,
+                       comments.count > 0 {
+                        Text("Comments")
+                            .tint(.black)
+                            .font(.system(size: 18, weight: .bold))
+                            .padding(.vertical)
+                        
+                        ForEach(comments) { comment in
+                            CommentCell(comment: comment)
+                        }
+                        
+                    }
+
                 }
                 
                 

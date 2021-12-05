@@ -14,6 +14,8 @@ struct AppState {
 
 extension AppState {
     struct HomeState {
+        var sliderClose = true
+
         var posts = [Post]()
         var loadingPosts = false
         var page = 1
@@ -21,7 +23,6 @@ extension AppState {
         
         var presentingPost: Post?
         var loadingPostDetail = false
-        var postDetail = ""
         var postDetailError: AppError?
     }
 }

@@ -64,7 +64,7 @@ struct Parser {
     
     
     
-    static func parseIntoPostDetail(doc: HTMLDocument) throws -> String {
+    static func parseIntoPostDetail(doc: HTMLDocument) throws -> (String, [Comment]) {
         guard let components = doc.body?.xpath("//div[@id='page']//div[@id='content']//article//div[@class='entry-content']//p") else {
             throw AppError.parseFail
         }
@@ -72,8 +72,26 @@ struct Parser {
         let detail = components
             .dropFirst()
             .compactMap(\.content)
-            .joined(separator: "\n")
+            .joined(separator: "\n\n")
         
-        return detail
+        
+        guard let commentElements = doc.body?.xpath("//article[@class='comment']") else {
+            return (detail, [])
+        }
+        
+        let comments = commentElements.compactMap { element -> Comment? in
+            guard
+                let id = element["id"],
+                let author = element.xpath("//b[@class='fn']").first?.content,
+                let date = element.xpath("//time").first?.content,
+                let content = element.xpath("//section[@class='comment-content comment']//p").first?.content
+            else {
+                return nil
+            }
+            
+            return Comment(id: id, author: author, date: date, content: content)
+        }
+        
+        return (detail, comments)
     }
 }

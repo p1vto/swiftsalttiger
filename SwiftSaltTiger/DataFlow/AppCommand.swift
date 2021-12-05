@@ -81,8 +81,8 @@ struct FetchPostDetailCommand: AppCommand {
                     store.dispatch(.fetchPostDetailDone(result: .failure(error)))
                 }
                 token.unseal()
-            } receiveValue: { detail in
-                store.dispatch(.fetchPostDetailDone(result: .success(detail)))
+            } receiveValue: { result in
+                store.dispatch(.fetchPostDetailDone(result: .success(result)))
             }
             .seal(in: token)
 

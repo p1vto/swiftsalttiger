@@ -8,10 +8,11 @@
 import Foundation
 
 enum AppAction {
+    case setSlideMenuClosed(closed: Bool)
     case refreshPosts
     case refreshPostsDone(result: Result<[Post], AppError>)
     case fetchPosts
     case fetchPostDetail(post: Post)
     case fetchPostsDone(result: Result<[Post], AppError>)
-    case fetchPostDetailDone(result: Result<String, AppError>)
+    case fetchPostDetailDone(result: Result<(String, [Comment]), AppError>)
 }

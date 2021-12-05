@@ -19,11 +19,20 @@ struct HomeView: View, StoreAccessor {
             PostsView()
                 .blur(radius: blurRadius)
                 .allowsHitTesting(postsViewEnable)
+                .scaleEffect(1 - (blurRadius / 16))
+                .edgesIgnoringSafeArea(.all)
+                           
             SlideMenu()
                 .offset(x: offset)
                 
         }
         .gesture(dragGesture)
+        .onReceive(AppNotification.shouldHideSlideMenu.publisher) { _ in
+            performTransition(offset: -Defaults.FrameSize.slideMenuWidth)
+        }
+        .onReceive(AppNotification.shouldShowSlideMenu.publisher) { _ in
+            performTransition(offset: 0)
+        }
     }
     
 }
@@ -51,7 +60,7 @@ extension HomeView {
                                 offset = max(value.translation.width, -Defaults.FrameSize.slideMenuWidth)
                             }
                         case .toRight:
-                            if offset < 0, value.startLocation.x < 30 {
+                            if offset < 0, value.startLocation.x < 10 {
                                 offset = min(-Defaults.FrameSize.slideMenuWidth + value.translation.width, 0)
                             }
                     }
@@ -82,7 +91,12 @@ extension HomeView {
             self.blurRadius = offset == 0 ? 2 : 0
             self.postsViewEnable = offset != 0
         }
-        
+        tryUpdateSlideMenuState(value: offset == -Defaults.FrameSize.slideMenuWidth)
+    }
+    
+    func tryUpdateSlideMenuState(value: Bool) {
+        guard homeState.sliderClose != value else { return }
+        store.dispatch(.setSlideMenuClosed(closed: value))
     }
     
     

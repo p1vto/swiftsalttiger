@@ -40,6 +40,15 @@ struct PostsView: View, StoreAccessor {
                 
             }
             .navigationTitle("Posts")
+            .navigationBarItems(leading: Button(action: {
+                homeState.sliderClose ? AppNotification.post(.shouldShowSlideMenu) : AppNotification.post(.shouldHideSlideMenu)
+            }, label: {
+                Image(systemName: "list.dash")
+                    .resizable()
+                    .frame(width: 18, height: 14)
+                    .tint(.black)
+                    
+            }))
             .listStyle(.plain)
             .refreshable {
                 store.dispatch(.refreshPosts)
@@ -55,6 +64,7 @@ struct PostsView: View, StoreAccessor {
                 store.dispatch(.refreshPosts)
             }
         }
+        .navigationViewStyle(.stack)
         
     }
     
