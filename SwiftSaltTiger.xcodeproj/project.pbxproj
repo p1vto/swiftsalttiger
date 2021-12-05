@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		4F74C22CC7CF88708E5D1380 /* Pods-SwiftSaltTiger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSaltTiger.release.xcconfig"; path = "Target Support Files/Pods-SwiftSaltTiger/Pods-SwiftSaltTiger.release.xcconfig"; sourceTree = "<group>"; };
-		574C10A12752732100B15570 /* SwiftSaltTiger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSaltTiger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		574C10A12752732100B15570 /* SaltTiger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaltTiger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574C10BD2753E5D400B15570 /* SwiftSaltTigerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSaltTigerApp.swift; sourceTree = "<group>"; };
 		574C10BF2753E5D400B15570 /* AsyncRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncRequests.swift; sourceTree = "<group>"; };
 		574C10C02753E5D400B15570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 		576C0BAC275CA36D0047948C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		576C0BAE275CB2170047948C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		576C0BB0275CC2030047948C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		576C0BB2275CE8E10047948C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		577329362756782A0054E3A1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5773293827567D270054E3A1 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		5773293A27567D440054E3A1 /* AppCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommand.swift; sourceTree = "<group>"; };
@@ -102,7 +103,7 @@
 		574C10A22752732100B15570 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				574C10A12752732100B15570 /* SwiftSaltTiger.app */,
+				574C10A12752732100B15570 /* SaltTiger.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +111,7 @@
 		574C10BC2753E5D400B15570 /* SwiftSaltTiger */ = {
 			isa = PBXGroup;
 			children = (
+				576C0BB2275CE8E10047948C /* Info.plist */,
 				88AB006D2759FC5700D103CF /* App */,
 				57732935275678180054E3A1 /* DataFlow */,
 				883F18062754CC9E00D6F313 /* ViewModels */,
@@ -216,7 +218,7 @@
 			);
 			name = SwiftSaltTiger;
 			productName = DYTT;
-			productReference = 574C10A12752732100B15570 /* SwiftSaltTiger.app */;
+			productReference = 574C10A12752732100B15570 /* SaltTiger.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -463,15 +465,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F96325774H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftSaltTiger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,8 +483,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "p1vtoMiilo.-SwiftSaltTiger";
-				PRODUCT_NAME = SwiftSaltTiger;
+				PRODUCT_BUNDLE_IDENTIFIER = p1vtoMiilo.SwiftSaltTiger;
+				PRODUCT_NAME = SaltTiger;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -493,15 +497,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F96325774H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftSaltTiger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,8 +515,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "p1vtoMiilo.-SwiftSaltTiger";
-				PRODUCT_NAME = SwiftSaltTiger;
+				PRODUCT_BUNDLE_IDENTIFIER = p1vtoMiilo.SwiftSaltTiger;
+				PRODUCT_NAME = SaltTiger;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

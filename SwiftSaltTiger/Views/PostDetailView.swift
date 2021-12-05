@@ -85,10 +85,12 @@ struct PostDetailView: View, StoreAccessor {
                     
                     if let comments = homeState.presentingPost?.comments,
                        comments.count > 0 {
+                        Divider()
                         Text("Comments")
                             .tint(.black)
                             .font(.system(size: 18, weight: .bold))
                             .padding(.vertical)
+                        
                         
                         ForEach(comments) { comment in
                             CommentCell(comment: comment)
