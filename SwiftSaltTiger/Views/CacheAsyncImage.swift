@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CacheAsyncImage: View {
     private let url: URL
@@ -15,37 +16,15 @@ struct CacheAsyncImage: View {
     }
 
     var body: some View {
-        if let image = ImageCache[url] {
-            image
-                .resizable()
-        } else {
-            AsyncImage(url: url) { image in
-                self.cacheAndRender(image: image)
-            } placeholder: {
+        KFImage(url)
+            .placeholder { _ in
                 ProgressView()
             }
-        }
+            .retry(maxCount: 3, interval: .seconds(5))
+            .resizable()
+            
     }
     
-    private func cacheAndRender(image: Image) -> some View {
-        if ImageCache[url] == nil {
-            ImageCache[url] = image
-        }
-        
-        return image.resizable()
-    }
+
 }
 
-fileprivate struct ImageCache {
-    static private var cache = [URL: Image]()
-
-    static subscript(url: URL) -> Image? {
-        get {
-            ImageCache.cache[url]
-        }
-        
-        set {
-            ImageCache.cache[url] = newValue
-        }
-    }
-}

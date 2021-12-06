@@ -30,7 +30,7 @@ struct PostDetailView: View, StoreAccessor {
                         .cornerRadius(10)
 
                     VStack(alignment: .leading) {
-                        Text("Publication Date: \(post.pubDate)")
+                        Text("Date: \(post.pubDate)")
                             .foregroundColor(.black)
                             .font(.system(size: 16))
                         
@@ -86,7 +86,7 @@ struct PostDetailView: View, StoreAccessor {
                     if let comments = homeState.presentingPost?.comments,
                        comments.count > 0 {
                         Divider()
-                        Text("Comments")
+                        Text("Comments(\(comments.count))")
                             .tint(.black)
                             .font(.system(size: 18, weight: .bold))
                             .padding(.vertical)

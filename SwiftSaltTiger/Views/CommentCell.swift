@@ -13,15 +13,27 @@ struct CommentCell: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(comment.author)
-                .font(.system(size: 16, weight: .heavy))
-                .tint(.black)
+            HStack {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .foregroundColor(.gray.opacity(0.6))
+                    .frame(width: 30, height: 30)
+                    .cornerRadius(15)
+                    
                 
-                
+                VStack(alignment: .leading) {
+                    Text(comment.author)
+                        .font(.system(size: 16, weight: .heavy))
+                        .tint(.black)
+                        
+                        
+                    
+                    Text(comment.date)
+                        .font(.system(size: 11, weight: .regular))
+                        .tint(.gray)
+                }
+            }
             
-            Text(comment.date)
-                .font(.system(size: 11, weight: .regular))
-                .tint(.gray)
                 
                 
             

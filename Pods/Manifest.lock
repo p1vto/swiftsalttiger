@@ -1,16 +1,20 @@
 PODS:
   - Kanna (5.2.7)
+  - Kingfisher (7.1.1)
 
 DEPENDENCIES:
   - Kanna
+  - Kingfisher
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Kanna
+    - Kingfisher
 
 SPEC CHECKSUMS:
   Kanna: 01cfbddc127f5ff0963692f285fcbc8a9d62d234
+  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
 
-PODFILE CHECKSUM: 72f3c4e9c84109e5eed5be6733d3490a13e94f08
+PODFILE CHECKSUM: bb68551f41d3b0691bd353b40a3a222f21feb458
 
 COCOAPODS: 1.11.2

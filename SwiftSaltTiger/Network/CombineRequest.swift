@@ -27,12 +27,20 @@ private extension Publisher {
     }
 }
 
+private extension URLRequest {
+    static func genericURLRequest(url: URL) -> URLRequest {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.timeoutInterval = 15
+        return urlRequest
+    }
+}
+
 struct PostListRequest {
     let page: Int
     
     var publisher: AnyPublisher<[Post], AppError> {
         let url = URL(string: "\(Defaults.URLConfig.host)/page/\(page)")!
-        let urlRequest = URLRequest(url: url)
+        let urlRequest = URLRequest.genericURLRequest(url: url)
         let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .genericRetry()
             .tryMap { try Kanna.HTML(html: $0.data, encoding: .utf8) }
@@ -49,7 +57,7 @@ struct PostDetailRequest {
     
     var publisher: AnyPublisher<(String, [Comment]), AppError> {
         let url = URL(string: post.detailUrl)!
-        let urlRequest = URLRequest(url: url)
+        let urlRequest = URLRequest.genericURLRequest(url: url)
         let publisher = URLSession.shared.dataTaskPublisher(for: urlRequest)
             .genericRetry()
             .tryMap { try Kanna.HTML(html: $0.data, encoding: .utf8) }
