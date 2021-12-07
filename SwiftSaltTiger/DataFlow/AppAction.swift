@@ -11,8 +11,12 @@ enum AppAction {
     case setSlideMenuClosed(closed: Bool)
     case refreshPosts
     case refreshPostsDone(result: Result<[Post], AppError>)
+    
     case fetchPosts
-    case fetchPostDetail(post: Post)
     case fetchPostsDone(result: Result<[Post], AppError>)
+    case fetchPostsErrorPresented
+    
+    case fetchPostDetail(post: Post)
     case fetchPostDetailDone(result: Result<(String, [Comment]), AppError>)
+    case fetchPostDetailErrorPresented
 }

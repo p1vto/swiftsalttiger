@@ -80,6 +80,12 @@ final class Store: ObservableObject {
                     case .failure(let err):
                         appState.homeState.postDetailError = err
                 }
+                
+            case .fetchPostsErrorPresented:
+                appState.homeState.postListError = nil
+                
+            case .fetchPostDetailErrorPresented:
+                appState.homeState.postDetailError = nil
         }
         
         return (appState, appCommand)

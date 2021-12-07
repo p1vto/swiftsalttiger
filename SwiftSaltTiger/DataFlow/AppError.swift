@@ -11,4 +11,17 @@ enum AppError: Error {
     case requestFail
     case parseFail
     case unknown
+    
+    var description: String {
+        switch self {
+            case .requestFail:
+                return "request error"
+            case .parseFail:
+                return "parse error"
+            case .unknown:
+                return "unknown error"
+        }
+    }
 }
+
+

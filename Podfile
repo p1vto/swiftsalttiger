@@ -7,4 +7,5 @@ target 'SwiftSaltTiger' do
   # Pods for SwiftSaltTiger
   pod 'Kanna'
   pod 'Kingfisher'
+  pod 'SPAlert'
 end

@@ -11,11 +11,12 @@ struct PostDetailView: View, StoreAccessor {
     let post: Post
     @EnvironmentObject var store: Store
     @State private var isPresentingWebView = false
-
+    @State private var isPresentError = false
+    
     init(post: Post) {
         self.post = post
     }
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -28,7 +29,7 @@ struct PostDetailView: View, StoreAccessor {
                     CacheAsyncImage(url: URL(string: post.cover)!)
                         .frame(width: 150, height: 180)
                         .cornerRadius(10)
-
+                    
                     VStack(alignment: .leading) {
                         Text("Date: \(post.pubDate)")
                             .foregroundColor(.black)
@@ -78,7 +79,7 @@ struct PostDetailView: View, StoreAccessor {
                                         .foregroundColor(.white)
                                 }
                         }
-
+                        
                         Spacer()
                     }
                     .padding()
@@ -97,7 +98,7 @@ struct PostDetailView: View, StoreAccessor {
                         }
                         
                     }
-
+                    
                 }
                 
                 
@@ -107,9 +108,22 @@ struct PostDetailView: View, StoreAccessor {
         .task {
             store.dispatch(.fetchPostDetail(post: post))
         }
+        .onChange(of: homeState.postDetailError) { newValue in
+            isPresentError = !(newValue == nil)
+        }
         .popover(isPresented: $isPresentingWebView) {
             WebContentView(url: URL(string: post.downloadLink)!)
         }
+        .spAlert(isPresent: $isPresentError,
+                 title: "Oops",
+                 message: homeState.postDetailError?.description,
+                 duration: 1,
+                 dismissOnTap: true,
+                 preset: .custom(UIImage(systemName: "exclamationmark.icloud")!),
+                 haptic: .error) {
+            store.dispatch(.fetchPostDetailErrorPresented)
+        }
+                 
         
     }
     
