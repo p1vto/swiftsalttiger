@@ -29,7 +29,7 @@ extension AppState {
 
 
 extension AppState {
-    struct EnvironmentState {
-        let baseURL = "https://www.salttiger.com"
+    struct UserState {
+        
     }
 }

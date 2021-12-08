@@ -13,3 +13,15 @@ extension NSNotification.Name {
         NotificationCenter.default.publisher(for: self)
     }
 }
+
+
+
+extension DispatchQueue {
+    static func mainSync(_ work: () -> Void) {
+        if Thread.isMainThread {
+            work()
+        } else {
+            DispatchQueue.main.sync(execute: work)
+        }
+    }
+}
