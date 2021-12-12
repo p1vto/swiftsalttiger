@@ -19,4 +19,8 @@ extension StoreAccessor {
     var homeState: AppState.HomeState {
         appState.homeState
     }
+    
+    var envState: AppState.EnvState {
+        appState.envState
+    }
 }

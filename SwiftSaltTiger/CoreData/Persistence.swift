@@ -50,3 +50,79 @@ struct PersistenceController {
     }
     
 }
+
+
+extension PersistenceController {
+    static func fetch<MO: NSManagedObject>(
+        entityType: MO.Type,
+        fetchLimit: Int = 0,
+        predicate: NSPredicate? = nil,
+        findBeforeFetch: Bool = true,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) -> [MO] {
+        var results = [MO]()
+        let context = shared.container.viewContext
+        DispatchQueue.mainSync {
+            let request = NSFetchRequest<MO>(
+                entityName: String(describing: entityType)
+            )
+            request.predicate = predicate
+            request.fetchLimit = fetchLimit
+            request.sortDescriptors = sortDescriptors
+            results = (try? context.fetch(request)) ?? []
+        }
+        return results
+    }
+    
+    static func fetch<MO: NSManagedObject>(
+        entityType: MO.Type,
+        fetchLimit: Int = 0,
+        predicate: NSPredicate? = nil,
+        findBeforeFetch: Bool = true,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) -> MO? {
+        var results = [MO]()
+        let context = shared.container.viewContext
+        DispatchQueue.mainSync {
+            let request = NSFetchRequest<MO>(
+                entityName: String(describing: entityType)
+            )
+            request.predicate = predicate
+            request.fetchLimit = fetchLimit
+            request.sortDescriptors = sortDescriptors
+            results = (try? context.fetch(request)) ?? []
+        }
+        return results.first
+    }
+    
+    static func createIfNotExist<MO: NSManagedObject>(
+        entityType: MO.Type,
+        commitChanges: ((MO?) -> Void)? = nil
+    ) {
+        if fetch(entityType: entityType).count > 0 {
+            return
+        } else {
+            let newMO = MO(context: shared.container.viewContext)
+            commitChanges?(newMO)
+            saveContext()
+        }
+    }
+    
+    static func update<MO: NSManagedObject>(
+        entityType: MO.Type,
+        predicate: NSPredicate? = nil,
+        createIfNil: Bool = false,
+        commitChanges: ((MO) -> Void)
+    ) {
+        
+        let storedMO: MO? = fetch(
+            entityType: entityType,
+            predicate: predicate
+        )
+        
+        if let storedMO = storedMO {
+            commitChanges(storedMO)
+            saveContext()
+        }
+    }
+}

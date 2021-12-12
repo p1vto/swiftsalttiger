@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct SlideMenu: View {
+struct SlideMenu: View, StoreAccessor {
     @EnvironmentObject var store: Store
     
     var body: some View {
@@ -21,11 +21,11 @@ struct SlideMenu: View {
                     .cornerRadius(25)
                     .padding(.top)
                 
-                Text("User")
+                Text(envState.user?.name ?? "")
                     .font(.title)
                     .foregroundColor(.black)
                     
-                Text("p1vto1110@gmail.com")
+                Text(envState.user?.email ?? "")
                     .tint(.black)
                     .font(.subheadline)
                     .foregroundColor(.black)

@@ -12,6 +12,8 @@ enum AppAction {
     case refreshPosts
     case refreshPostsDone(result: Result<[Post], AppError>)
     
+    case fetchUser
+
     case fetchPosts
     case fetchPostsDone(result: Result<[Post], AppError>)
     case fetchPostsErrorPresented

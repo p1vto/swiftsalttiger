@@ -9,6 +9,7 @@ import Foundation
 
 struct AppState {
     var homeState = HomeState()
+    var envState = EnvState()
 }
 
 
@@ -29,7 +30,7 @@ extension AppState {
 
 
 extension AppState {
-    struct UserState {
-        
+    struct EnvState {
+        var user: User?
     }
 }

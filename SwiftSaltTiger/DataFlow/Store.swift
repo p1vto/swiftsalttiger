@@ -51,6 +51,10 @@ final class Store: ObservableObject {
                         appState.homeState.postListError = err
                 }
                 
+            case .fetchUser:
+                let user: UserMO? = PersistenceController.fetch(entityType: UserMO.self)
+                appState.envState.user = user?.toEntity()
+
             case .fetchPosts:
                 appState.homeState.loadingPosts = true
                 appCommand = FetchPostsCommand(page: appState.homeState.page)
