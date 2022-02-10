@@ -76,6 +76,7 @@
 		88AB00692759F0E400D103CF /* StoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAccessor.swift; sourceTree = "<group>"; };
 		88AB006B2759FB7700D103CF /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		88AB006E275A11EE00D103CF /* SlideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
+		88B0122327799C26003B84CA /* playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 				574C10BE2753E5D400B15570 /* Network */,
 				574C10C12753E5D400B15570 /* Models */,
 				574C10C62753E5D400B15570 /* Views */,
+				88B0122327799C26003B84CA /* playground.playground */,
 			);
 			path = SwiftSaltTiger;
 			sourceTree = "<group>";

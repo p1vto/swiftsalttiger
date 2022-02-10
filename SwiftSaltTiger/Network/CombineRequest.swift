@@ -30,7 +30,7 @@ private extension Publisher {
 private extension URLRequest {
     static func genericURLRequest(url: URL) -> URLRequest {
         var urlRequest = URLRequest(url: url)
-        urlRequest.timeoutInterval = 15
+        urlRequest.timeoutInterval = 30
         return urlRequest
     }
 }

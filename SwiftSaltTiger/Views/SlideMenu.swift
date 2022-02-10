@@ -33,8 +33,10 @@ struct SlideMenu: View, StoreAccessor {
                 
                 Spacer()
                 
-                SlideMenuRow(title: "Settings", image: "gear")
-                    .padding()
+                SlideMenuRow(title: "Settings", image: "gear") {
+                    store.dispatch(.sheetSettings)
+                }
+                .padding()
                 
                 
             }
@@ -54,8 +56,23 @@ struct SlideMenu: View, StoreAccessor {
 
 
 struct SlideMenuRow: View {
-    let title: String
-    let image: String
+    private let title: String
+    private let image: String
+    private var action: (() -> ())?
+    
+    
+    @State private var isPressing = false
+    
+    private var backgroundColor: Color {
+        isPressing ? Color(.systemGray6).opacity(0.6) : .clear
+    }
+    
+    init(title: String, image: String, action: (() -> ())? = nil) {
+        self.title = title
+        self.image = image
+        self.action = action
+    }
+
     
     var body: some View {
         HStack {
@@ -70,6 +87,18 @@ struct SlideMenuRow: View {
             
             Spacer()
         }
+        .padding(.vertical, 5)
+        .contentShape(Rectangle())
+        .background(backgroundColor)
+        .cornerRadius(10)
+        .onTapGesture(perform: action ?? {})
+        .onLongPressGesture(
+            minimumDuration: .infinity,
+            maximumDistance: 50,
+            pressing: { isPressing = $0 },
+            perform: {}
+        )
+        
     }
     
 }

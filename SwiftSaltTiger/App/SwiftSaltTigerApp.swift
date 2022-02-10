@@ -33,9 +33,5 @@ extension SwiftSaltTigerApp {
         }
         
         store.dispatch(.fetchUser)
-        
-        
-        
-
     }
 }

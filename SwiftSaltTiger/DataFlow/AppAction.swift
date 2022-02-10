@@ -9,6 +9,8 @@ import Foundation
 
 enum AppAction {
     case setSlideMenuClosed(closed: Bool)
+    case sheetSettings
+
     case refreshPosts
     case refreshPostsDone(result: Result<[Post], AppError>)
     
