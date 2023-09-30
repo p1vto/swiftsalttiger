@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SPAlert
+
 
 struct PostsView: View, StoreAccessor {
     @EnvironmentObject var store: Store
@@ -65,15 +65,7 @@ struct PostsView: View, StoreAccessor {
             .onAppear {
                 store.dispatch(.refreshPosts)
             }
-            .spAlert(isPresent: $isPresentError,
-                     title: "Oops",
-                     message: homeState.postListError?.description,
-                     duration: 1,
-                     dismissOnTap: true,
-                     preset: .custom(UIImage(systemName: "exclamationmark.icloud")!),
-                     haptic: .error) {
-                store.dispatch(.fetchPostsErrorPresented)
-            }
+            
         }
         .navigationViewStyle(.stack)
         
@@ -85,8 +77,3 @@ struct PostsView: View, StoreAccessor {
         
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostsView()
-    }
-}

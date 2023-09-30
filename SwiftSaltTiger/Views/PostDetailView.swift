@@ -114,15 +114,6 @@ struct PostDetailView: View, StoreAccessor {
         .popover(isPresented: $isPresentingWebView) {
             WebContentView(url: URL(string: post.downloadLink)!)
         }
-        .spAlert(isPresent: $isPresentError,
-                 title: "Oops",
-                 message: homeState.postDetailError?.description,
-                 duration: 1,
-                 dismissOnTap: true,
-                 preset: .custom(UIImage(systemName: "exclamationmark.icloud")!),
-                 haptic: .error) {
-            store.dispatch(.fetchPostDetailErrorPresented)
-        }
                  
         
     }
