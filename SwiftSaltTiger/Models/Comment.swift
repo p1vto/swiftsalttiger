@@ -13,3 +13,9 @@ struct Comment: Codable, Identifiable {
     let date: String
     let content: String
 }
+
+extension Comment: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+    }
+}

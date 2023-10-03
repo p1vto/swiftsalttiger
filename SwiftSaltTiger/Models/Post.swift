@@ -20,3 +20,9 @@ struct Post: Codable, Identifiable {
     var detail: String?
     var comments: [Comment]?
 }
+
+extension Post: Equatable {
+    static func == (lhs: Post, rhs: Post) -> Bool {
+        lhs.id == rhs.id
+    }
+}

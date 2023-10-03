@@ -6,36 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct SwiftSaltTigerApp: App {
-    @StateObject private var store = Store()
-
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .environmentObject(store)
-                .onAppear {
-                    configureUser()
-                }
-                
+            AppView(store: Store(initialState: AppFeature.State(), reducer: {
+                AppFeature()
+                    ._printChanges()
+            }))
         }
-    }
-}
-
-
-
-extension SwiftSaltTigerApp {
-    private func configureUser() {
-        PersistenceController.createIfNotExist(entityType: UserMO.self) { mo in
-            mo?.name = "User"
-            mo?.email = "email"
-        }
-        
-        store.dispatch(.fetchUser)
-        
-        
-        
-
     }
 }

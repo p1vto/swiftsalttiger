@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct WebContentView: View {
     @StateObject var vm = WebViewModel()
@@ -22,4 +23,17 @@ struct WebContentView: View {
             }
     }
 
+}
+
+
+class WebViewModel: ObservableObject {
+    let webView: WKWebView
+    
+    init() {
+        webView = WKWebView(frame: .zero)
+    }
+
+    func loadUrl(url: URL) {
+        webView.load(URLRequest(url: url))
+    }
 }

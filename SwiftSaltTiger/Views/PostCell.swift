@@ -29,9 +29,11 @@ struct PostCell: View {
                     .foregroundColor(.black)
                     .font(.system(size: 14))
                 
-                Text("Code: \(post.downloadCode)")
-                    .foregroundColor(.black)
-                    .font(.system(size: 14))
+                if !post.downloadCode.isEmpty {
+                    Text("Code: \(post.downloadCode)")
+                        .foregroundColor(.black)
+                        .font(.system(size: 14))
+                }
             }
             
             Spacer()

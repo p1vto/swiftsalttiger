@@ -7,15 +7,9 @@
 
 import SwiftUI
 
-struct Defaults {
+struct Config {
     struct URLConfig {
         static let host = "https://www.salttiger.com"
     }
     
-    
-    struct FrameSize {
-        static let slideMenuWidth: CGFloat = 200
-        
-
-    }
 }
